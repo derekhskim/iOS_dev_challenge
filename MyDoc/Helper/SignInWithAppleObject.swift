@@ -15,10 +15,6 @@ public class SignInWithAppleObject: NSObject {
     // Apple Sign in Properties
     private var currentNonce: String?
     
-    // Error Properties
-//    @Published var showError: Bool = false
-//    @Published var errorMessage: String = ""
-    
     // App Log Status
     @AppStorage("log_status") var logStatus: Bool = false
     
@@ -69,13 +65,6 @@ public class SignInWithAppleObject: NSObject {
       return result
     }
     
-//    func handleError(error: Error)async{
-//        await MainActor.run(body: {
-//            errorMessage = error.localizedDescription
-//            showError.toggle()
-//        })
-//    }
-    
     private func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)
         let hashedData = SHA256.hash(data: inputData)
@@ -115,25 +104,6 @@ extension SignInWithAppleObject: ASAuthorizationControllerDelegate {
                 withAnimation(.easeInOut){self.logStatus = true}
             }
         }
-        
-//        func logGoogleUser(user: GIDGoogleUser){
-//            Task{
-//                do{
-//                    guard let idToken = user.authentication.idToken else{return}
-//                    let accesToken = user.authentication.accessToken
-//
-//                    let credential = OAuthProvider.credential(withProviderID: idToken, accessToken: accesToken)
-//
-//                    try await Auth.auth().signIn(with: credential)
-//
-//                    print("Sucess Google!")
-//                    await MainActor.run(body: {
-//                        withAnimation(.easeInOut){logStatus = true}
-//                    })
-//                }catch{
-//                    await handleError(error: error)
-//                }
-//            }
-//        }
+
     }
 }

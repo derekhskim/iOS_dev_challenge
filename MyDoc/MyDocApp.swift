@@ -10,7 +10,7 @@ import SwiftUI
 struct MyDocApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SignInView()
         }
     }
 }

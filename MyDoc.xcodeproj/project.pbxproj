@@ -21,6 +21,12 @@
 		65559CA42917063900596BAB /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 65559CA32917063900596BAB /* GoogleSignIn */; };
 		65559CA62917063900596BAB /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 65559CA52917063900596BAB /* GoogleSignInSwift */; };
 		65559CB129171BAF00596BAB /* SignInWithGoogleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559CB029171BAF00596BAB /* SignInWithGoogleButton.swift */; };
+		65559CB329183D3D00596BAB /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559CB229183D3D00596BAB /* SocialLoginButton.swift */; };
+		65559CB529183D7400596BAB /* LoginCredentialDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559CB429183D7400596BAB /* LoginCredentialDescription.swift */; };
+		65559CBC291869B200596BAB /* LoginCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559CBB291869B200596BAB /* LoginCredential.swift */; };
+		65559CC0291869EE00596BAB /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559CBF291869EE00596BAB /* LoginService.swift */; };
+		65559CC329186B4600596BAB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559CC229186B4600596BAB /* LoginViewModel.swift */; };
+		65559CC629186F9E00596BAB /* InputTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559CC529186F9E00596BAB /* InputTextFieldView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +63,12 @@
 		65559C9F2916FEA700596BAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		65559CA9291707B700596BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		65559CB029171BAF00596BAB /* SignInWithGoogleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogleButton.swift; sourceTree = "<group>"; };
+		65559CB229183D3D00596BAB /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginButton.swift; sourceTree = "<group>"; };
+		65559CB429183D7400596BAB /* LoginCredentialDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentialDescription.swift; sourceTree = "<group>"; };
+		65559CBB291869B200596BAB /* LoginCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredential.swift; sourceTree = "<group>"; };
+		65559CBF291869EE00596BAB /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		65559CC229186B4600596BAB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		65559CC529186F9E00596BAB /* InputTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextFieldView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,13 +122,12 @@
 		65559C6B2916B7EB00596BAB /* MyDoc */ = {
 			isa = PBXGroup;
 			children = (
+				65559CC429186E1F00596BAB /* Base */,
 				65559CA9291707B700596BAB /* Info.plist */,
 				65559CA12917043600596BAB /* Helper */,
 				65559C9F2916FEA700596BAB /* GoogleService-Info.plist */,
 				65559C992916FCA100596BAB /* MyDoc.entitlements */,
-				65559C962916FADF00596BAB /* View */,
 				65559C6C2916B7EB00596BAB /* MyDocApp.swift */,
-				65559C6E2916B7EB00596BAB /* ContentView.swift */,
 				65559C702916B7EC00596BAB /* Assets.xcassets */,
 				65559C722916B7EC00596BAB /* Preview Content */,
 			);
@@ -151,8 +162,10 @@
 		65559C962916FADF00596BAB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				65559C6E2916B7EB00596BAB /* ContentView.swift */,
 				65559C972916FAFF00596BAB /* SignInWithAppleButton.swift */,
 				65559CB029171BAF00596BAB /* SignInWithGoogleButton.swift */,
+				65559CC529186F9E00596BAB /* InputTextFieldView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -160,9 +173,54 @@
 		65559CA12917043600596BAB /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				65559CBA291869A200596BAB /* Login */,
 				65559C9A2916FCF500596BAB /* SignInWithAppleObject.swift */,
+				65559CB229183D3D00596BAB /* SocialLoginButton.swift */,
+				65559CB429183D7400596BAB /* LoginCredentialDescription.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		65559CBA291869A200596BAB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				65559CC129186B3600596BAB /* ViewModel */,
+				65559CBE291869DC00596BAB /* Service */,
+				65559CBD291869D600596BAB /* Model */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		65559CBD291869D600596BAB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				65559CBB291869B200596BAB /* LoginCredential.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		65559CBE291869DC00596BAB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				65559CBF291869EE00596BAB /* LoginService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		65559CC129186B3600596BAB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				65559CC229186B4600596BAB /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		65559CC429186E1F00596BAB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				65559C962916FADF00596BAB /* View */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +367,12 @@
 				65559CB129171BAF00596BAB /* SignInWithGoogleButton.swift in Sources */,
 				65559C982916FAFF00596BAB /* SignInWithAppleButton.swift in Sources */,
 				65559C6D2916B7EB00596BAB /* MyDocApp.swift in Sources */,
+				65559CC629186F9E00596BAB /* InputTextFieldView.swift in Sources */,
+				65559CC0291869EE00596BAB /* LoginService.swift in Sources */,
+				65559CBC291869B200596BAB /* LoginCredential.swift in Sources */,
+				65559CB329183D3D00596BAB /* SocialLoginButton.swift in Sources */,
+				65559CB529183D7400596BAB /* LoginCredentialDescription.swift in Sources */,
+				65559CC329186B4600596BAB /* LoginViewModel.swift in Sources */,
 				65559C9B2916FCF500596BAB /* SignInWithAppleObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,18 +11,6 @@ import Firebase
 import FirebaseAuth
 import GoogleSignIn
 
-@main
-struct SignInWithGoogleButton: App {
-    // Connecting App Delegate
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
-    var body: some Scene {
-        WindowGroup{
-            ContentView()
-        }
-    }
-}
-
 class AppDelegate: NSObject, UIApplicationDelegate{
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
@@ -34,7 +22,23 @@ class AppDelegate: NSObject, UIApplicationDelegate{
     
     func application(_ application: UIApplication, open url: URL,
                      options: [UIApplication.OpenURLOptionsKey: Any])
-      -> Bool {
-      return GIDSignIn.sharedInstance.handle(url)
+    -> Bool {
+        return GIDSignIn.sharedInstance.handle(url)
+    }
+}
+
+@main
+struct SignInWithGoogleButton: App {
+    // Connecting App Delegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    var body: some Scene {
+        WindowGroup{
+            NavigationView{
+                let viewModel = AppViewModel()
+                SignInView()
+                    .environmentObject(viewModel)
+            }
+        }
     }
 }
