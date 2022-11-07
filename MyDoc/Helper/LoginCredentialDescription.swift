@@ -13,7 +13,7 @@ struct loginCredentialDescription: View{
     var body: some View {
         HStack{
             text
-                .foregroundColor(Color.black.opacity(0.4))
+                .foregroundColor(Color.black.opacity(0.7))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
         }

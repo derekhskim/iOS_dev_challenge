@@ -16,7 +16,6 @@ class AppDelegate: NSObject, UIApplicationDelegate{
         
         // Initializing Firebase
         FirebaseApp.configure()
-        
         return true
     }
     
@@ -31,13 +30,18 @@ class AppDelegate: NSObject, UIApplicationDelegate{
 struct SignInWithGoogleButton: App {
     // Connecting App Delegate
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var sessionService = SessionServiceImpl()
     
     var body: some Scene {
         WindowGroup{
             NavigationView{
-                let viewModel = AppViewModel()
-                SignInView()
-                    .environmentObject(viewModel)
+                switch sessionService.state {
+                case .loggedIn:
+                    HomeView()
+                        .environmentObject(sessionService)
+                case .loggedOut:
+                    SignInView()
+                }
             }
         }
     }

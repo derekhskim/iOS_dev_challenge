@@ -44,27 +44,7 @@ class AppViewModel: ObservableObject {
 //    }
 }
 
-struct ContentView: View {
-    @EnvironmentObject var viewModel: AppViewModel
-    
-    var body: some View {
-        NavigationView {
-            if viewModel.signedIn {
-                Text("You are signed in")
-            }
-            else {
-                SignInView()
-            }
-        }
-        .onAppear{
-            viewModel.signedIn = viewModel.isSignedIn
-        }
-    }
-}
-
 struct SignInView: View {
-    @State var email = ""
-    @State var password = ""
     
     @StateObject private var vm = LoginViewModelImpl(
         service: LoginServiceImpl()
@@ -92,58 +72,34 @@ struct SignInView: View {
                     })
                     
                     // Apple Login Button
-                    Button(action: {signInWithAppleObject.signInWithApple()}, label: {
+                    Button(action: {
+                        signInWithAppleObject.signInWithApple()
+                    }, label: {
                         SocialLoginButton(image: Image(uiImage: UIImage(named: "apple_logo")!), text: Text("Continue with Apple"))
                             .padding(.vertical)
                         
                     })
                     
+                    // Email Login Section
                     loginCredentialDescription(text: Text("Email"))
                         .padding(.top)
                     
-                    TextField("Enter email", text: $email)
-                        .disableAutocorrection(true)
-                        .autocapitalization(.none)
-                        .font(.title3)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .border(Color.gray.opacity(0.7))
-                        .background(Color.white)
-                        .shadow(color: Color.black.opacity(0.08), radius: 60, x: 0.0, y: 16)
-                    //                    .border(.red, width: CGFloat(wrongUsername))
+                    InputTextFieldView(text: $vm.credentials.email,
+                    placeholder: "Enter Email",
+                                       keyboardType: .emailAddress,
+                    sfSymbol: "envelope")
                     
                     loginCredentialDescription(text: Text("Password"))
                         .padding(.top)
                     
-                    SecureField("Enter password", text: $password)
-                        .disableAutocorrection(true)
-                        .autocapitalization(.none)
-                        .font(.title3)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .border(Color.gray.opacity(0.7))
-                        .background(Color.white)
-                        .shadow(color: Color.black.opacity(0.08), radius: 60, x: 0.0, y: 16)
-                        .padding(.bottom, 50)
-                    //                    .border(.red, width: CGFloat(wrongPassword))
+                    InputPasswordView(password: $vm.credentials.password,
+                    placeholder: "Enter Password",
+                    sfSymbol: "lock")
                     
-                    Button(action: {
-                        // Authentication
+                    ButtonView(title: "Login") {
                         vm.login()
-                        
-                        guard !email.isEmpty, !password.isEmpty else {
-                            return
-                        }
-                        
-                        viewModel.signIn(email: email, password: password)
-                        
-                    }, label: {
-                        Text("Login")
-                            .foregroundColor(Color.black.opacity(0.4))
-                            .frame(maxWidth: .infinity, maxHeight: 50)
-                            .border(Color.gray.opacity(0.7))
-                            .background(Color.gray.opacity(0.4))
-                    })
+                    }
+                    .padding(.top, 30)
                     
 //                    NavigationLink(destination: SignUpView(), label: {
 //                        Text("Create Account")
