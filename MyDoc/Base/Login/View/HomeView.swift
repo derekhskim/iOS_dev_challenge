@@ -15,11 +15,28 @@ struct HomeView: View {
     var body: some View {
         
         ZStack{
-            
-            VStack(alignment: .leading, spacing: 16) {
-                Text("You are Signed In!")
+            VStack(alignment: .leading){
+                Text("JSA 1")
+                    .font(.largeTitle)
+                    .foregroundColor(.secondary)
+                    .fontWeight(.semibold)
+                    .padding(.bottom, 3)
+                
+                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed neque ac nibh.")
+                    .foregroundColor(.secondary)
+                    .font(.subheadline)
+                
+                HStack {
+                    Text("Created at June 7, 2021")
+                        .foregroundColor(.secondary)
+                    Spacer()
+                    Text("New")
+                        .foregroundColor(.red)
+                }
+                .padding(.top, 3)
             }
-            .ignoresSafeArea()
+            .padding(.horizontal)
+            .frame(maxWidth: .infinity)
             .toolbar{
                 ToolbarItem(placement: .principal) {
                         ZStack{
@@ -28,6 +45,7 @@ struct HomeView: View {
                     }
                 }
             }
+            
             
             GeometryReader{ reader in
                 Color.gray.opacity(0.65)
