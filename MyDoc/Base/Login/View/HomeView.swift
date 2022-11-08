@@ -8,36 +8,34 @@
 import SwiftUI
 
 struct HomeView: View {
-    
-    @EnvironmentObject var sessionService: SessionServiceImpl
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor(.gray.opacity(0.25))
+    }
     
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 16) {
+        ZStack{
             
             VStack(alignment: .leading, spacing: 16) {
                 Text("You are Signed In!")
             }
+            .ignoresSafeArea()
+            .toolbar{
+                ToolbarItem(placement: .principal) {
+                        ZStack{
+                            Text("My Docs").font(.title3)
+                                .foregroundColor(Color.black.opacity(0.5))
+                    }
+                }
+            }
             
-            ButtonView(title: "Logout") {
-                sessionService.logout()
-            }
-        }
-        .padding(.horizontal, 16)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar{
-            ToolbarItem(placement: .principal) {
-                    Color.gray
+            GeometryReader{ reader in
+                Color.gray.opacity(0.65)
+                    .frame(height: 100, alignment: .top)
                     .ignoresSafeArea()
-                        .overlay(
-                    VStack{
-                        Text("My Docs").font(.title3)
-                            .foregroundColor(Color.black.opacity(0.5))
-                            .frame(maxWidth: .infinity, maxHeight: 50)
-                })
             }
         }
-        
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -45,7 +43,6 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
             HomeView()
-                .environmentObject(SessionServiceImpl())
         }
     }
 }
