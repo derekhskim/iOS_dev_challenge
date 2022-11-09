@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    var readStatus: Bool = false
+    var myDocumentList: [MyDocument] = MyDocumentList.myDocList
+    
     init() {
         UITabBar.appearance().backgroundColor = UIColor(.gray.opacity(0.25))
     }
@@ -15,41 +18,47 @@ struct HomeView: View {
     var body: some View {
         
         ZStack{
-            VStack(alignment: .leading){
-                Text("JSA 1")
-                    .font(.largeTitle)
-                    .foregroundColor(.secondary)
-                    .fontWeight(.semibold)
-                    .padding(.bottom, 3)
-                
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed neque ac nibh.")
-                    .foregroundColor(.secondary)
-                    .font(.subheadline)
-                
-                HStack {
-                    Text("Created at June 7, 2021")
+            List(myDocumentList, id: \.id) { MyDocument in
+                VStack(alignment: .leading){
+                    Text(MyDocument.title)
+                        .font(.largeTitle)
                         .foregroundColor(.secondary)
-                    Spacer()
-                    Text("New")
-                        .foregroundColor(.red)
+                        .fontWeight(.semibold)
+                        .padding(.bottom, 3)
+                    
+                    Text(MyDocument.description)
+                        .foregroundColor(.secondary)
+                        .font(.subheadline)
+                    
+                    HStack {
+                        Text(MyDocument.uploadDate)
+                            .foregroundColor(.secondary)
+                        Spacer()
+                        if MyDocument.status == false {
+                            Text("New")
+                                .foregroundColor(.red)
+                        } else {
+                            Text("Completed")
+                                .foregroundColor(.green)
+                        }
+                            
+                    }
+                    .font(.system(size: 14))
+                    .padding(.top, 3)
                 }
-                .padding(.top, 3)
-            }
-            .padding(.horizontal)
-            .frame(maxWidth: .infinity)
-            .toolbar{
-                ToolbarItem(placement: .principal) {
+                .toolbar{
+                    ToolbarItem(placement: .principal) {
                         ZStack{
                             Text("My Docs").font(.title3)
                                 .foregroundColor(Color.black.opacity(0.5))
+                        }
                     }
                 }
             }
             
-            
             GeometryReader{ reader in
                 Color.gray.opacity(0.65)
-                    .frame(height: 100, alignment: .top)
+                    .frame(height: 90, alignment: .top)
                     .ignoresSafeArea()
             }
         }

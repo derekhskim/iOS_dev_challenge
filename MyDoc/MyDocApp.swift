@@ -43,7 +43,7 @@ struct MyDocApp: App {
                                 Label("MyDocs", systemImage: "house")
                             }
                         NotificationsView()
-                            .badge(10)
+                            .badge(5)
                             .tabItem{
                                 Label("Notifications", systemImage: "bell")
                             }

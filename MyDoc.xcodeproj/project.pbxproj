@@ -35,6 +35,7 @@
 		65559CFF2919AA7000596BAB /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559CFE2919AA7000596BAB /* ChatView.swift */; };
 		65559D012919AA9700596BAB /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559D002919AA9700596BAB /* ProfileView.swift */; };
 		65559D07291AED4100596BAB /* MyDocList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559D06291AED4100596BAB /* MyDocList.swift */; };
+		65559D0A291B232B00596BAB /* Login.json in Resources */ = {isa = PBXBuildFile; fileRef = 65559D09291B232B00596BAB /* Login.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		65559CFE2919AA7000596BAB /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		65559D002919AA9700596BAB /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		65559D06291AED4100596BAB /* MyDocList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDocList.swift; sourceTree = "<group>"; };
+		65559D09291B232B00596BAB /* Login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Login.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 		65559C6B2916B7EB00596BAB /* MyDoc */ = {
 			isa = PBXGroup;
 			children = (
+				65559D08291B230A00596BAB /* Mockup Endpoints */,
 				65559CF02918A13A00596BAB /* Helper */,
 				65559CC429186E1F00596BAB /* Base */,
 				65559CA9291707B700596BAB /* Info.plist */,
@@ -263,6 +266,14 @@
 			path = List;
 			sourceTree = "<group>";
 		};
+		65559D08291B230A00596BAB /* Mockup Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				65559D09291B232B00596BAB /* Login.json */,
+			);
+			path = "Mockup Endpoints";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -379,6 +390,7 @@
 				65559C742916B7EC00596BAB /* Preview Assets.xcassets in Resources */,
 				65559C712916B7EC00596BAB /* Assets.xcassets in Resources */,
 				65559CA02916FEA700596BAB /* GoogleService-Info.plist in Resources */,
+				65559D0A291B232B00596BAB /* Login.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

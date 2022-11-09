@@ -25,9 +25,11 @@ protocol LoginViewModel {
 
 final class LoginViewModelImpl: ObservableObject, LoginViewModel {
     
+    @Published var loginResponse: LoginResponse? = nil
     @Published var hasError: Bool = false
     @Published var state: LoginState = .na
     @Published var credentials: LoginCredentials = LoginCredentials.new
+    @Published var logincredentialsencodable: LoginCredentialsEncodable? = nil
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -54,6 +56,48 @@ final class LoginViewModelImpl: ObservableObject, LoginViewModel {
                 self?.state = .successful
             }
             .store(in: &subscriptions)
+    }
+    
+    func loginSample (){
+        guard let url = URL(string: "/api/login") else { fatalError("Missing URL") }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "accept")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            let encoder = JSONEncoder()
+            let encodeData = try encoder.encode(logincredentialsencodable)
+            urlRequest.httpBody = encodeData
+        } catch {
+            print(error.localizedDescription)
+            return
+        }
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            if let response = response, let HTTPResponse = response as? HTTPURLResponse {
+                if HTTPResponse.statusCode != 200 {
+                    print("Bad Response")
+                    return
+                } else if HTTPResponse.statusCode == 200 {
+                    if let data = data {
+                        do {
+                            let decoder = JSONDecoder()
+                            let loginData = try decoder.decode(LoginResponse.self, from: data)
+                            self.loginResponse = loginData
+                        } catch {
+                            print(error.localizedDescription)
+                            return
+                        }
+                    }
+                }
+            }
+        }
+        .resume()
     }
 }
 

@@ -10,7 +10,7 @@ import SwiftUI
 struct NotificationsView: View {
     var body: some View {
         ZStack{
-            Text("You have 10 notifications\n\nPlease Check the messages.")
+            Text("You have 5 notifications\n\nPlease Check the messages.")
         
             GeometryReader{ reader in
                 Color.gray.opacity(0.65)
