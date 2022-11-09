@@ -36,6 +36,7 @@
 		65559D012919AA9700596BAB /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559D002919AA9700596BAB /* ProfileView.swift */; };
 		65559D07291AED4100596BAB /* MyDocList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559D06291AED4100596BAB /* MyDocList.swift */; };
 		65559D0A291B232B00596BAB /* Login.json in Resources */ = {isa = PBXBuildFile; fileRef = 65559D09291B232B00596BAB /* Login.json */; };
+		65559D0C291B6A5E00596BAB /* DocumentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559D0B291B6A5E00596BAB /* DocumentDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		65559D002919AA9700596BAB /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		65559D06291AED4100596BAB /* MyDocList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDocList.swift; sourceTree = "<group>"; };
 		65559D09291B232B00596BAB /* Login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Login.json; sourceTree = "<group>"; };
+		65559D0B291B6A5E00596BAB /* DocumentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 				65559CFC2919AA3C00596BAB /* NotificationsView.swift */,
 				65559CFE2919AA7000596BAB /* ChatView.swift */,
 				65559D002919AA9700596BAB /* ProfileView.swift */,
+				65559D0B291B6A5E00596BAB /* DocumentDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				65559CDB29189FBD00596BAB /* LoginView.swift in Sources */,
 				65559CDA29189FBD00596BAB /* ButtonView.swift in Sources */,
 				65559CFB2918A46700596BAB /* SessionUserDetails.swift in Sources */,
+				65559D0C291B6A5E00596BAB /* DocumentDetailView.swift in Sources */,
 				65559CED29189FDD00596BAB /* MyDocApp.swift in Sources */,
 				65559CDC29189FBD00596BAB /* LoginCredentialDescription.swift in Sources */,
 				65559CE829189FDD00596BAB /* LoginService.swift in Sources */,
