@@ -100,6 +100,11 @@ struct SignInView: View {
                         vm.login()
                     }
                     .padding(.top, 30)
+                    .onAppear{
+                        vm.loginEndPoint()
+                        // MARK:- Calling Endpoint
+                        // sample ID: helloworld@gmail.com, PW: 123456 for email login
+                    }
                     
 //                    NavigationLink(destination: SignUpView(), label: {
 //                        Text("Create Account")

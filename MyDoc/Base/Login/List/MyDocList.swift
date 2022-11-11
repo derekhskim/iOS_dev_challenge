@@ -12,7 +12,7 @@ struct MyDocument {
     let title: String
     let description: String
     let uploadDate: String
-    let status: Bool
+    var status: Bool
 }
 
 struct MyDocumentList {

@@ -58,22 +58,71 @@ final class LoginViewModelImpl: ObservableObject, LoginViewModel {
             .store(in: &subscriptions)
     }
     
-    func loginSample (){
-        guard let url = URL(string: "/api/login") else { fatalError("Missing URL") }
+    
+    func loginEndPoint (){
+        var baseUrl = ""
+        let loginEndPointURL = baseUrl + "/api/login"
         
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "POST"
-        urlRequest.setValue("application/json", forHTTPHeaderField: "accept")
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        guard let url = URL(string: loginEndPointURL) else { fatalError("Missing URL") }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             let encoder = JSONEncoder()
             let encodeData = try encoder.encode(logincredentialsencodable)
-            urlRequest.httpBody = encodeData
+            request.httpBody = encodeData
         } catch {
             print(error.localizedDescription)
             return
         }
-        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            if let response = response, let HTTPResponse = response as? HTTPURLResponse {
+                if HTTPResponse.statusCode != 200 {
+                    print("Bad Response")
+                    return
+                } else if HTTPResponse.statusCode == 200 {
+                    if let data = data {
+                        do {
+                            let decoder = JSONDecoder()
+                            let loginData = try decoder.decode(LoginResponse.self, from: data)
+                            self.loginResponse = loginData
+                        } catch {
+                            print(error.localizedDescription)
+                            return
+                        }
+                    }
+                }
+            }
+        }
+        .resume()
+    }
+    
+    func docSubmitEndPoint (){
+        var baseUrl = ""
+        let docEndPointURL = baseUrl + "/api/doc/submit"
+        
+        guard let url = URL(string: docEndPointURL) else { fatalError("Missing URL") }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            let encoder = JSONEncoder()
+            let encodeData = try encoder.encode(logincredentialsencodable)
+            request.httpBody = encodeData
+        } catch {
+            print(error.localizedDescription)
+            return
+        }
+        URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 print(error.localizedDescription)
                 return
@@ -100,6 +149,11 @@ final class LoginViewModelImpl: ObservableObject, LoginViewModel {
         .resume()
     }
 }
+
+
+/// Struct Constants
+/// Static let loginEndPoint = baseUrl + "/api/login"
+/// Statitc let postMethod = "POST"
 
 private extension LoginViewModelImpl {
     

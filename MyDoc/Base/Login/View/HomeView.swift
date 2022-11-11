@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    var readStatus: Bool = false
     var myDocumentList: [MyDocument] = MyDocumentList.myDocList
     
     init() {
@@ -18,34 +17,37 @@ struct HomeView: View {
     var body: some View {
         
         ZStack{
+            
             List(myDocumentList, id: \.id) { MyDocument in
-                VStack(alignment: .leading){
-                    Text(MyDocument.title)
-                        .font(.largeTitle)
-                        .foregroundColor(.secondary)
-                        .fontWeight(.semibold)
-                        .padding(.bottom, 3)
-                    
-                    Text(MyDocument.description)
-                        .foregroundColor(.secondary)
-                        .font(.subheadline)
-                    
-                    HStack {
-                        Text(MyDocument.uploadDate)
+                NavigationLink(destination: DocumentDetailView(document: MyDocument), label: {
+                    VStack(alignment: .leading){
+                        Text(MyDocument.title)
+                            .font(.largeTitle)
                             .foregroundColor(.secondary)
-                        Spacer()
-                        if MyDocument.status == false {
-                            Text("New")
-                                .foregroundColor(.red)
-                        } else {
-                            Text("Completed")
-                                .foregroundColor(.green)
+                            .fontWeight(.semibold)
+                            .padding(.bottom, 3)
+                        
+                        Text(MyDocument.description)
+                            .foregroundColor(.secondary)
+                            .font(.subheadline)
+                        
+                        HStack {
+                            Text(MyDocument.uploadDate)
+                                .foregroundColor(.secondary)
+                            Spacer()
+                            if MyDocument.status == false {
+                                Text("New")
+                                    .foregroundColor(.red)
+                            } else {
+                                Text("Completed")
+                                    .foregroundColor(.green)
+                            }
+                                
                         }
-                            
+                        .font(.system(size: 14))
+                        .padding(.top, 3)
                     }
-                    .font(.system(size: 14))
-                    .padding(.top, 3)
-                }
+                })
                 .toolbar{
                     ToolbarItem(placement: .principal) {
                         ZStack{

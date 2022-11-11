@@ -35,8 +35,11 @@
 		65559CFF2919AA7000596BAB /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559CFE2919AA7000596BAB /* ChatView.swift */; };
 		65559D012919AA9700596BAB /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559D002919AA9700596BAB /* ProfileView.swift */; };
 		65559D07291AED4100596BAB /* MyDocList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559D06291AED4100596BAB /* MyDocList.swift */; };
-		65559D0A291B232B00596BAB /* Login.json in Resources */ = {isa = PBXBuildFile; fileRef = 65559D09291B232B00596BAB /* Login.json */; };
 		65559D0C291B6A5E00596BAB /* DocumentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65559D0B291B6A5E00596BAB /* DocumentDetailView.swift */; };
+		65FE3E99291E28BE003FBD8B /* SubmitDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FE3E98291E28BE003FBD8B /* SubmitDocument.swift */; };
+		65FE3EAC291E2C9D003FBD8B /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = 65FE3EAB291E2C9D003FBD8B /* OneSignal */; };
+		65FE3EAE291E2C9D003FBD8B /* OneSignalExtension in Frameworks */ = {isa = PBXBuildFile; productRef = 65FE3EAD291E2C9D003FBD8B /* OneSignalExtension */; };
+		65FE3EB6291E35D1003FBD8B /* first.apn in Resources */ = {isa = PBXBuildFile; fileRef = 65FE3EB5291E35D1003FBD8B /* first.apn */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,19 @@
 			remoteInfo = MyDoc;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		65FE3EA9291E2B53003FBD8B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		65559C692916B7EB00596BAB /* MyDoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,8 +103,9 @@
 		65559CFE2919AA7000596BAB /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		65559D002919AA9700596BAB /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		65559D06291AED4100596BAB /* MyDocList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDocList.swift; sourceTree = "<group>"; };
-		65559D09291B232B00596BAB /* Login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Login.json; sourceTree = "<group>"; };
 		65559D0B291B6A5E00596BAB /* DocumentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDetailView.swift; sourceTree = "<group>"; };
+		65FE3E98291E28BE003FBD8B /* SubmitDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitDocument.swift; sourceTree = "<group>"; };
+		65FE3EB5291E35D1003FBD8B /* first.apn */ = {isa = PBXFileReference; lastKnownFileType = text; path = first.apn; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +113,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65FE3EAE291E2C9D003FBD8B /* OneSignalExtension in Frameworks */,
 				65559CA62917063900596BAB /* GoogleSignInSwift in Frameworks */,
+				65FE3EAC291E2C9D003FBD8B /* OneSignal in Frameworks */,
 				65559C9E2916FE3400596BAB /* FirebaseAuth in Frameworks */,
 				65559CA42917063900596BAB /* GoogleSignIn in Frameworks */,
 			);
@@ -126,6 +145,7 @@
 				65559C7C2916B7EC00596BAB /* MyDocTests */,
 				65559C862916B7EC00596BAB /* MyDocUITests */,
 				65559C6A2916B7EB00596BAB /* Products */,
+				65FE3EAF291E2CFA003FBD8B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,7 +162,6 @@
 		65559C6B2916B7EB00596BAB /* MyDoc */ = {
 			isa = PBXGroup;
 			children = (
-				65559D08291B230A00596BAB /* Mockup Endpoints */,
 				65559CF02918A13A00596BAB /* Helper */,
 				65559CC429186E1F00596BAB /* Base */,
 				65559CA9291707B700596BAB /* Info.plist */,
@@ -200,6 +219,7 @@
 		65559CF02918A13A00596BAB /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				65FE3EB2291E3549003FBD8B /* Notifications */,
 				65559CE329189FDD00596BAB /* SignInWithAppleObject.swift */,
 				65559CE229189FDD00596BAB /* SocialLoginButton.swift */,
 				65559CD629189FBD00596BAB /* LoginCredentialDescription.swift */,
@@ -239,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				65559CDE29189FDD00596BAB /* LoginCredentials.swift */,
+				65FE3E98291E28BE003FBD8B /* SubmitDocument.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -269,12 +290,19 @@
 			path = List;
 			sourceTree = "<group>";
 		};
-		65559D08291B230A00596BAB /* Mockup Endpoints */ = {
+		65FE3EAF291E2CFA003FBD8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				65559D09291B232B00596BAB /* Login.json */,
 			);
-			path = "Mockup Endpoints";
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		65FE3EB2291E3549003FBD8B /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				65FE3EB5291E35D1003FBD8B /* first.apn */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +315,7 @@
 				65559C652916B7EB00596BAB /* Sources */,
 				65559C662916B7EB00596BAB /* Frameworks */,
 				65559C672916B7EB00596BAB /* Resources */,
+				65FE3EA9291E2B53003FBD8B /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -297,6 +326,8 @@
 				65559C9D2916FE3400596BAB /* FirebaseAuth */,
 				65559CA32917063900596BAB /* GoogleSignIn */,
 				65559CA52917063900596BAB /* GoogleSignInSwift */,
+				65FE3EAB291E2C9D003FBD8B /* OneSignal */,
+				65FE3EAD291E2C9D003FBD8B /* OneSignalExtension */,
 			);
 			productName = MyDoc;
 			productReference = 65559C692916B7EB00596BAB /* MyDoc.app */;
@@ -373,6 +404,7 @@
 			packageReferences = (
 				65559C9C2916FE3400596BAB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				65559CA22917063800596BAB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				65FE3EAA291E2C9D003FBD8B /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
 			);
 			productRefGroup = 65559C6A2916B7EB00596BAB /* Products */;
 			projectDirPath = "";
@@ -392,8 +424,8 @@
 			files = (
 				65559C742916B7EC00596BAB /* Preview Assets.xcassets in Resources */,
 				65559C712916B7EC00596BAB /* Assets.xcassets in Resources */,
+				65FE3EB6291E35D1003FBD8B /* first.apn in Resources */,
 				65559CA02916FEA700596BAB /* GoogleService-Info.plist in Resources */,
-				65559D0A291B232B00596BAB /* Login.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +470,7 @@
 				65559D012919AA9700596BAB /* ProfileView.swift in Sources */,
 				65559CDD29189FBD00596BAB /* InputTextFieldView.swift in Sources */,
 				65559CEC29189FDD00596BAB /* SignInWithAppleObject.swift in Sources */,
+				65FE3E99291E28BE003FBD8B /* SubmitDocument.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +817,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		65FE3EAA291E2C9D003FBD8B /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -801,6 +842,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 65559CA22917063800596BAB /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		65FE3EAB291E2C9D003FBD8B /* OneSignal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65FE3EAA291E2C9D003FBD8B /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignal;
+		};
+		65FE3EAD291E2C9D003FBD8B /* OneSignalExtension */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65FE3EAA291E2C9D003FBD8B /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignalExtension;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
